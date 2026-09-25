@@ -6,7 +6,7 @@
 #   target:  lnd | cln | ldk | eclair | spec
 #   status:  fixed | reported | wontfix
 #   impact:  theft | grief | dos | crash | debug-assert | ub | uninit |
-#            liveness | spec
+#            liveness | spec | race
 #
 # `found_with` is how the bug was discovered. Optional. /projects/smite/ renders
 # the entries whose value is `smite`.

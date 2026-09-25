@@ -7,7 +7,7 @@
 */ -}}
 {{- $targets := slice "lnd" "cln" "ldk" "eclair" "spec" -}}
 {{- $statuses := slice "fixed" "reported" "wontfix" -}}
-{{- $impacts := slice "theft" "grief" "dos" "crash" "debug-assert" "ub" "uninit" "liveness" "spec" -}}
+{{- $impacts := slice "theft" "grief" "dos" "crash" "debug-assert" "ub" "uninit" "liveness" "spec" "race" -}}
 {{- $seen := slice -}}
 {{- range $i, $b := hugo.Data.bugs -}}
   {{- $at := printf "data/bugs.yaml entry %d (%s)" (add $i 1) (or $b.id "<no id>") -}}
