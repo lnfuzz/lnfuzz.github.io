@@ -6,7 +6,7 @@
 #   target:  lnd | cln | ldk | eclair | spec
 #   status:  fixed | reported | wontfix
 #   impact:  theft | grief | dos | crash | debug-assert | ub | uninit |
-#            liveness | spec
+#            liveness | spec | race
 #
 # `found_with` is how the bug was discovered. Optional. /projects/smite/ renders
 # the entries whose value is `smite`.
@@ -380,3 +380,23 @@
   credit: [erick]
   reported: 2026-09-24
   upstream: https://github.com/ElementsProject/lightning/issues/9570
+
+- id: lnd-channel-open-race-latent-nil-deref
+  title: "Channel-open race with latent nil dereference"
+  found_with: smite
+  target: lnd
+  status: reported
+  impact: race
+  credit: [niklas, matt]
+  reported: 2026-09-24
+  upstream: https://github.com/lightningnetwork/lnd/issues/11259
+
+- id: cln-channeld-large-htlc-abort
+  title: "channeld aborts on large `update_add_htlc` amount"
+  found_with: smite
+  target: cln
+  status: reported
+  impact: crash
+  credit: [niklas, matt]
+  reported: 2026-09-25
+  upstream: https://github.com/ElementsProject/lightning/issues/9576
