@@ -380,3 +380,23 @@
   credit: [erick]
   reported: 2026-09-24
   upstream: https://github.com/ElementsProject/lightning/issues/9570
+
+- id: eclair-splice-init-overdraw
+  title: "Failure to reject `splice_init` that overdraws the sender's balance"
+  found_with: smite
+  target: eclair
+  status: reported
+  impact: spec
+  credit: [erick]
+  reported: 2026-09-25
+  upstream: https://github.com/ACINQ/eclair/issues/3385
+
+- id: eclair-splice-rbf-after-splice-locked
+  title: "Failure to reject `tx_init_rbf` after `splice_locked`"
+  found_with: smite
+  target: eclair
+  status: reported
+  impact: spec
+  credit: [erick]
+  reported: 2026-09-25
+  upstream: https://github.com/ACINQ/eclair/issues/3386
