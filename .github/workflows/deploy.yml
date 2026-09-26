@@ -16,13 +16,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-env:
-  # The entire dependency manifest for this site is these two values.
-  # To bump: change the version, download the tarball, and replace the checksum
-  # with `sha256sum hugo_<version>_linux-amd64.tar.gz`.
-  HUGO_VERSION: 0.162.1
-  HUGO_SHA256: 4bfcdb092d0306586f1b72e5687787ead053faab2d71f09951d3c5fecde66873
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,50 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Standard edition is sufficient: the site writes plain CSS, uses no Sass
-      # and no image processing.
-      - name: Install Hugo
-        run: |
-          set -euo pipefail
-          url="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
-          curl -sSLf -o hugo.tar.gz "$url"
-          echo "${HUGO_SHA256}  hugo.tar.gz" | sha256sum --check --strict -
-          tar -xzf hugo.tar.gz hugo
-          ./hugo version
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # No -D, so drafts stay off the rendered site.
-      - name: Build
-        run: ./hugo --minify --printPathWarnings
-        env:
-          HUGO_ENVIRONMENT: production
-
-      # baseURL is the only place the domain may appear. Templates must build
-      # URLs with .Permalink/.RelPermalink/relURL/absURL so that changing the
-      # domain stays a one-line edit.
-      - name: Assert no hardcoded host
-        run: |
-          if grep -rnE 'https?://(www\.)?lnfuzz\.(org|github\.io)' layouts/ content/ data/; then
-            echo "::error::A template or page hardcodes the site's own host. Use relURL/absURL instead."
-            exit 1
-          fi
-
-      # No JavaScript and no third-party requests.
-      - name: Assert no scripts or third-party requests
-        run: |
-          if grep -rniE '<script|googleapis|platform\.twitter|buttons\.github|jsdelivr|cdnjs' public/; then
-            echo "::error::Found a script tag or third-party reference in the built site."
-            exit 1
-          fi
-
-      - name: Assert Atom feed at /feed.xml
-        run: |
-          test -s public/feed.xml || {
-            echo "::error::public/feed.xml is missing."
-            exit 1
-          }
+      - name: Build and check
+        uses: ./.github/actions/build-site
 
       # This action defaults to _site/, but Hugo publishes to public/.
       - name: Upload artifact
