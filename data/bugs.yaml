@@ -122,6 +122,18 @@
   upstream: https://github.com/ElementsProject/lightning/issues/9274
   fix: https://github.com/ElementsProject/lightning/pull/9318
 
+- id: eclair-open-channel-race-dos
+  title: "`open_channel` race orphans channel actors"
+  found_with: smite
+  target: eclair
+  status: fixed
+  impact: dos
+  credit: [matt]
+  reported: 2026-07-15
+  fixed: 2026-07-17
+  fix: https://github.com/ACINQ/eclair/pull/3324
+  advisory: eclair-open-channel-race-dos
+
 - id: ldk-delayed-payment-output-weight
   title: "`to_self_delay` size omitted from `DelayedPaymentOutput` weight calculation"
   found_with: smite
