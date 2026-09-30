@@ -40,7 +40,7 @@ hugo new content advisories/cln-something-specific.md
 
 Both are created as drafts.
 
-New bugs go at the end of `data/bugs.yaml`.
+New bugs go in `data/bugs.yaml`, sorted by the `reported:` date.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) before writing an advisory.
 
