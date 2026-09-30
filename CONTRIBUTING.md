@@ -36,14 +36,18 @@ Preferences, not hard rules:
   produces readable diffs. The rendered text can still contain common special
   characters (e.g., Goldmark turns `--` into an en dash and `"` into curly
   quotes at build time).
+- One sentence per line and no line wrap in `content/`. This keeps later
+  sentence edits as a one-line diff and avoids the need to re-wrap lines after
+  an edit.
 - Org-level prose is first person plural.
 - Page images go in `static/images/`, referenced root-absolute
   (`/images/foo.png`). Resize before committing.
 
 ## Adding a bug
 
-Append to the end of `data/bugs.yaml`. The header comment documents every field
-and the allowed values, and the build fails on anything outside them.
+Add your entry to `data/bugs.yaml`, keeping the bugs sorted by the `reported:`
+date. The header comment documents every field and the allowed values, and the
+build fails on anything outside them.
 
 Two things you cannot copy straight off the upstream page:
 
