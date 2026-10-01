@@ -307,11 +307,13 @@
   title: "Empty `channel_type` TLV negotiates a legacy channel"
   found_with: smite
   target: lnd
-  status: reported
+  status: fixed
   impact: spec
   credit: [matt]
   reported: 2026-09-14
+  fixed: 2026-09-23
   upstream: https://github.com/lightningnetwork/lnd/issues/11195
+  fix: https://github.com/lightningnetwork/lnd/pull/11212
 
 - id: cln-reserve-below-own-dust-limit
   title: "`accept_channel` sets `channel_reserve_satoshis` below our own `dust_limit_satoshis`"
