@@ -441,3 +441,23 @@
   credit: [erick]
   reported: 2026-09-25
   upstream: https://github.com/ACINQ/eclair/issues/3386
+
+- id: bolt-dual-funding-multiple-funding-outputs
+  title: "Unspecified behavior when multiple outputs match the funding script"
+  found_with: audit
+  target: spec
+  status: reported
+  impact: spec
+  credit: [erick]
+  reported: 2026-11-17
+  fix: https://github.com/lightning/bolts/pull/1372
+
+- id: bolt-interactive-tx-nversion
+  title: "Unspecified `nVersion` for interactively-constructed transactions"
+  found_with: audit
+  target: spec
+  status: reported
+  impact: spec
+  credit: [erick]
+  reported: 2026-11-18
+  fix: https://github.com/lightning/bolts/pull/1373
